@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { loginHandler } from "@/lib/utils"
+import { setPosition } from "@/lib/utils"
 
 export const POST = async (request: Promise<Request>) => {
   const req = await request;
@@ -16,25 +16,27 @@ export const POST = async (request: Promise<Request>) => {
     })
   }
 
-  if(!jsonBody.password) {
+  if(jsonBody.isHere === undefined) {
     return NextResponse.json({
       success: false,
-      message: "Password is required"
+      message: "Parameter is required"
     }, {
         status:  400
     })
   }
 
-
-  if(await loginHandler(jsonBody.password)) {
+  try {
+    await setPosition(jsonBody.isHere)
     return NextResponse.json({
       success: true
     })
-  } else {
+    
+  } catch (error) {
     return NextResponse.json({
       success: false,
-      message: "Incorrect password"
+      message: "Server error"
+    }, {
+      status: 500
     })
   }
-
 }

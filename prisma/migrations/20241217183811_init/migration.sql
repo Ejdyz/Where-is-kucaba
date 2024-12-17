@@ -1,0 +1,11 @@
+-- CreateTable
+CREATE TABLE "Position" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "isHere" BOOLEAN NOT NULL DEFAULT false
+);
+
+-- CreateTable
+CREATE TABLE "Password" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "password" TEXT NOT NULL
+);
