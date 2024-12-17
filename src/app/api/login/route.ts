@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server"
 import { loginHandler } from "@/lib/utils"
 
-export const POST = async (request: Promise<Request>) => {
+export const POST = async (request: Request) => {
   const req = await request;
   let jsonBody;
 
   try {
     jsonBody =  await req.json()
   } catch (error) {
+    console.error(error)
     return NextResponse.json({
       success: false,
       message: "JSON syntax error"

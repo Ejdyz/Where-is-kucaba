@@ -28,6 +28,7 @@ const PositionChanger = ({isHere}:{isHere:boolean} ) => {
           alert(data.message);
         }
       } catch (error) {
+        console.error(error)
         alert("Server error");
       }
     };

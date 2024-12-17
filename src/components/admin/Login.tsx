@@ -2,8 +2,11 @@ import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
 import { Form } from "@nextui-org/form";
 
+interface LoginProps {
+  setIsLogged: (value: boolean) => void;
+}
 
-const Login = ({setIsLogged} : {setIsLogged:Function}) => {
+const Login = ({ setIsLogged }: LoginProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
